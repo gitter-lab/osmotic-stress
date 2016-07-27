@@ -1,11 +1,11 @@
-export outpath=/mnt/ws/home/dcronin/Tests
+export outpath=/mnt/ws/home/dcronin/PCSF-072116
 mkdir -p $outpath
 D=10
 r=0
 g=1e-3
-prizes=maxProteinScores2KM_tfPrizes
+Prizes=prizes
 s=122815
-for b in $(seq 0.25 0.25 8.0)
+for b in $(seq 0.25 0.25 10.0)
 do
 	for m in $(seq 0 0.005 0.1)
 	do
@@ -23,9 +23,9 @@ do
 			export beta=$b
 			export mu=$m
 			export omega=$w
-			export prizetype=$prizes
+			export prizetype=$Prizes
 			export seed=$s
-			condor_submit submitPCSF_122815.sub
+			condor_submit submitPCSF.sub
 		done
 	done
 done
