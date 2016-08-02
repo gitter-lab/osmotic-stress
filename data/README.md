@@ -1,4 +1,9 @@
-# Osmotic stress (HOG) pathway data files
+# Yeast and osmotic stress (HOG) pathway data files
+
+SGD_features.tab: yeast genome annotations, including a mapping from systematic
+(ORF) ids to gene symbols.  Downloaded on August 2, 2016 from
+http://www.yeastgenome.org/download-data/sequence  Based on based on Genome
+Version R64-2-1.
 
 ## sources
 Source proteins (receptors) in the pathway:
