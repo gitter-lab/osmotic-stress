@@ -1,0 +1,29 @@
+Background network split into four pieces.
+Punctuation was removed from yeast ORFs; namely YDR363W-A becomes YDR363WA.
+
+Columns:
+(1) "etype": short phrase indicating type of edge; one of
+acetylation|cxcx|cxorf|deacetylation|demethylation|deubiquitination|downstr_source|glycosylation|incomplex|kinasesubstrate|literature|literaturephos|metapath|methylation|modification|neddrub1ylation|phosdephos|phosphatasesubstrate|ppi|prenylation|proteolyticprocessing|rbp_protein|sumoylation|ubiquitination|dna_bind|rna_bind|translate
+
+* cxcx : inferred complex-complex interaction (at least 50% of possible interactions between two protein complexes observed in PPI network)
+* cxorf : inferred complex-protein interaction (at least 50% of proteins in complex interact with the other protein in PPI network)
+* rbp_protein : original data specified RNA-binding protein->mRNA; this edge represents RBP->mRNA->protein product of mRNA. 
+* translate : RNA to protein product (not used here)
+
+(2) geneA  
+(3) geneB 
+(4) dir : is edge directed? 1 if yes, 0, if no. If 1, edge is ordered geneA to geneB. If 0, node order doesn't matter and nodes will be in alphabetical order.
+(5) sign : -1 for repression, 1 for activation, 0 for unspecified.
+(6) source : name of database, person, first author of paper that provided the interaction. (edges with sources in form authorYear are typically from BioGRID.)
+(7) pmid : pubmed ID (typically from BioGRID)
+
+Files:
+
+final_internal_norbp_nopunct.tab : 
+ "Internal" (protein-protein) network, including kinase-substrate interactions and manually curated interactions from Audrey (source includes "audrey")
+ 
+final_one_step_rbp_nopunct.tab :
+I put the RBP->protein edges into a separate file.
+ 
+final_binding_nopunct_noselfreg.tab :
+protein-DNA interactions only. Removed any self-regulation edges.

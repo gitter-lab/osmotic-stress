@@ -1,0 +1,78 @@
+Workflow
+#################################################################
+1. Process Evidence.txt
+#################################################################
+Use evidence.txt MaxQuant output table:
+leave only the following columns (ToShortenEvidence.pl):
+	Modified_sequence^charge^TimePoint (e.g. _AAAAGAGGAGDS(ph)GDAVTK_^2_Exp_50sec);
+	Modified_sequence^charge (e.g. _AAAAGAGGAGDS(ph)GDAVTK_^2);
+	TimePoint;
+	pSTY_probabilities;
+	normalized FC;
+	SCX fraction;
+	Score;
+	Intensity;
+	Protein_id;
+	pSite_id;
+	MSMS_Type.
+	
+Then leave only unique "Modified_sequence^charge^TimePoint" ids based on higher Intensity.
+Remove column "Modified_sequence^charge^TimePoint" and save file as tsv
+Now convert data into "wide format" (in R package reshape) based on TimePoint parameter:
+
+	df<-read.table("H:\\formatted_evidence.txt",sep="\t",header=T)
+	dfr<-reshape(df,direction="wide",timevar="Time",idvar="Seq_z")
+	write.table(dfr,file="C:\\Users\\Evgeny\\Desktop\\reshaped_evidence.txt",sep="\t")
+
+This will give you entries based on " Modified_sequence^charge " identifier (columns can be reaaranged in excel with INDEX function)
+
+You still have to decide which FC values you are about to use (for which charged form of the same peptide). This is done based on higher RankN parameter (and if it is the same, then based on higher average intensity).
+Assign protein based on protein_id.
+
+Assign protein_id (in cases when there are multiple protein ids associated with the same peptide, leave only 1st id)
+
+remove reverse and contaminants and all peptides with 4 and more phosphogroups
+
+Use Protein_id to assign protein annotations (FASTA header, Rev/Cont, phosphosite positions) + add descriptions and protein names from SGD
+
+assign unique numerical id to each peptide
+
+assign uniprot accession numbers
+
+by using perl scripd and FASTA file assign phosphosite positions
+
+now by using perl script assign max local confidence (which would make sense only for phosphopeptides), so for nonphosphorylated peptides set it to NA
+
+save file
+
+Perform the following filtering:
+
+	P>1: leave unique "seqience_numPh" based on max RankN/Avr_Intensity (308x3P + 2375x2P)
+	P=1: leave unique "Phosphosite" based on max RankN/Avr_Intensity (15143x1P)
+	p=0: leave all peptides (2344x0P)
+
+Now filter all 1P peptides based on Average localization confidence (>0.75) --> 6359 x 1P
+For 2P/3P remove all peptides where none of the Average loc conf values (for individual phosphosites) are higher than 0.75
+for all peptides leave only with RankN>9 (10,11,12,13) (RankN>10 for 2P/3P)
+
+save file (create df1 for R, use to plot kinetic profiles)
+
+use nonphosphorylated peptides and Perseus to calculate Significance A and use threshold values to assign significance to phosphopeptides (RankS)
+
+create df2 with % of affected ratios (only among phosphopeptides) and use it for "Combinatorial explosion" figure
+
+perform pattern analysis 
+
+assign significance to the profiles based on both pattern analysis and FC (find cutoff values based on histograms, see df3)
+
+split table into 2 supplementary tables (0P and 1,2,3P)
+
+Now use all regulated profiles (both RankS and pattern analysis) for clustering (df4)
+
+append cluser numbers (min.mem = 0.5) to excel table and change cluster numbering (remove "crappy" clusters), create supplementary table 4 that shown clustered sites
+
+Create df5 to be used in R in order to plot "dynamic" profiles (essentially it will be a subset of df1)
+
+Assign evolutionary rates - both decimal (my Perl script) and binary (calculated by LP) to singly phosphorylated peptides. Use these rates to calculate statistics (see excel table evolutionary rates)
+
+
