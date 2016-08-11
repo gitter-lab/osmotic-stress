@@ -1,0 +1,5 @@
+Takes in the original Chasman network as input. Creates an edge and weight column. Obtains all of the directed edges and sets each edge weight at 0.5. Produces a file called ChasmanNetwork-Dir.txt that has GeneA, GeneB, edge weight, and direction. Removes these interactions: metapath, cxorf, and cxcx. Also removes inferred sources. 
+Then, this notebook generates statistics related to each source protein and how much the source proteins appear in the dataset. Then, it finds all of the sources in the interactome that have undirected edges and adds these undirected sources to the dataframe that is purely directed. 
+
+Input: Original input network developed by Chasman
+Output: Partial directed model of all the directed edges used in interactome, Interactome with both directed and undirected source interactions
