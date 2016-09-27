@@ -1,1 +1,1 @@
-This file within the results directory contains the network visualization files created after all other results files were created.
+This file within the results directory contains the network visualization files created after all other results files were created. The correct-name file contains the correct names of all the nodes in the network visualization.
