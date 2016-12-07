@@ -1,0 +1,1 @@
+python ../../OmicsIntegrator/scripts/forest.py --prize=prizes.txt --edge=ChasmanNetwork-DirUndir.txt --conf=tgfb_forest.cfg --dummyMode=dummy.txt --msgpath="/mnt/ws/virology/shared/lab folders/GitterLab/progs/msgsteiner9/msgsteiner9"
