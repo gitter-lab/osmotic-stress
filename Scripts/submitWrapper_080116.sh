@@ -1,4 +1,4 @@
-export outpath=/mnt/ws/home/dcronin/NoisePCSF-080116
+export outpath=/mnt/ws/home/dcronin/NoisePCSF-021317
 mkdir -p $outpath
 D=10
 r=0.01

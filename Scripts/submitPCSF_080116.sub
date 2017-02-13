@@ -2,7 +2,7 @@ Executable = runPCSF_080116.sh
 Universe = vanilla
 
 Notification = Never
-Notify_user = drcronin@wisc.edu
+Notify_user = dcronin@bgsu.edu
 
 Output = $ENV(outpath)/$(Cluster).$(Process).out
 Error = $ENV(outpath)/$(Cluster).$(Process).err
