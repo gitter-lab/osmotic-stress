@@ -1,0 +1,2 @@
+/mnt/ws/home/dcronin/tps/scripts/run --network ../Yeast/osmotic-stress/Notebooks/Forest-TPS/input-Network_080116.tsv --timeseries ../Yeast/osmotic-stress/Notebooks/ApplyThresholds/timeSeries.tsv --firstscores ../Yeast/osmotic-stress/Notebooks/ApplyThresholds/firstScores.tsv --prevscores ../Yeast/osmotic-stress/Notebooks/ApplyThresholds/prevScores.tsv --partialmodel ../Yeast/osmotic-stress/Notebooks/Forest-TPS/partialDirectedModel.sif --peptidemap ../Yeast/osmotic-stress/Notebooks/ApplyThresholds/peptideMap.tsv --source YER118C --threshold .01
+
