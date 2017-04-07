@@ -23,3 +23,5 @@ databases and HOG pathway reviews
 - SGD osmotic stress.txt: genes from the SGD database annotated with
 osmotic stress-related screening phenotypes
 - Kitano2016_data.xls: from http://www.nature.com/articles/npjsba201518
+- Kitano2016_Genes_Proteins.txt: created from Kitano2016_data.xls by
+a notebook in this repository
