@@ -25,3 +25,5 @@ osmotic stress-related screening phenotypes
 - Kitano2016_data.xls: from http://www.nature.com/articles/npjsba201518
 - Kitano2016_Genes.txt: created from Kitano2016_data.xls by
 a notebook in this repository
+- Kitano2016_ORFs.txt: created from Kitano2016_data.xls by
+a notebook in this repository
