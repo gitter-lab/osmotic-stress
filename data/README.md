@@ -22,6 +22,4 @@ databases and HOG pathway reviews
 - Hillenmeyer: an osmotic stress chemical screen
 - SGD osmotic stress.txt: genes from the SGD database annotated with
 osmotic stress-related screening phenotypes
-
-There is also the recent yeast pathway review article
-http://www.nature.com/articles/npjsba201518
+- Kitano2016_data.xls: from http://www.nature.com/articles/npjsba201518
