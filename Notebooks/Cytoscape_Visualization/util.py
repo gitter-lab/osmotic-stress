@@ -102,7 +102,9 @@ def PrepTemporalCytoscapeTPS(peptideMapFile, timeSeriesFile, peptideFirstScoreFi
         header = next(f).strip().split("\t")
         numCols = len(header)
         for line in f:
-            parts = line.strip().split("\t")
+            # TODO need more flexible parsing for files that have trailing
+            # missing values
+            parts = line.rstrip("\n").split("\t")
             if len(parts) != numCols:
                 raise RuntimeError("All peptide time series lines must have %d columns\n%s" % (numCols, line))
             prot = pep2Prot[parts[0]]
@@ -112,6 +114,8 @@ def PrepTemporalCytoscapeTPS(peptideMapFile, timeSeriesFile, peptideFirstScoreFi
             if logTransform:
                 timeSeries = map(robustLog,map(float,parts[1:]))
             else:
+                print parts[1:]
+                # TODO need to be more robust to missing data
                 timeSeries = map(float,parts[1:])
             timeSeriesMin = min(timeSeriesMin, min(timeSeries))
             timeSeriesMax = max(timeSeriesMax, max(timeSeries))
