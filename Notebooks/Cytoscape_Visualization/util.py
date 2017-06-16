@@ -21,7 +21,7 @@ def PrepTemporalCytoscapeTPS(peptideMapFile, timeSeriesFile, peptideFirstScoreFi
                              peptidePrevScoreFile, windowsFile, networkFile,
                              goldStandardFile, pvalThresh, logTransform,
                              styleTemplateFile, outAnnotFile, outStyleFile,
-                             logDefault = -1.0, addZero = False):
+                             logDefault = -1.0, addZero = False, repairMissing = False):
     """Merges multiple data sources to prepare an annotation table for proteins
     that can be imported into Cytoscape to display temporal information
     about the network.
@@ -47,6 +47,9 @@ def PrepTemporalCytoscapeTPS(peptideMapFile, timeSeriesFile, peptideFirstScoreFi
     logDefault - default value to use instead of log2(0) when taking the log
     transform, defaults to -1.0 if a value is not provided
     addZero - prepend a 0 to the peptide time series
+    repairMissing - fill in values for missing data; if the first time point is
+    missing, set it to 1 if logTransform is True or 0 otherwise; if later time
+    points are missing, set them to the previous observed time point
     
     Return:
     pepsPerProt - a list of the peptides counts for each protein
@@ -78,8 +81,12 @@ def PrepTemporalCytoscapeTPS(peptideMapFile, timeSeriesFile, peptideFirstScoreFi
     print "Loaded prizes for %d peptides" % len(pep2Prize)
     print "%d peptides with significant prizes (>= %d)" % (len([p for p in pep2Prize.values() if p >= sigThresh]), sigThresh)
 
+    defaultFirstValue = '0'
     if logTransform:
         print "Using default value of %f for log2(0)" % logDefault
+        # Set that value that will be used as the first value in the time
+        # series if it is missing
+        defaultFirstValue = '1'
     # A wrapper function that returns the default if we try to take log2(0)
     robustLog = partial(RobustLog2, default=logDefault)
         
@@ -102,21 +109,21 @@ def PrepTemporalCytoscapeTPS(peptideMapFile, timeSeriesFile, peptideFirstScoreFi
         header = next(f).strip().split("\t")
         numCols = len(header)
         for line in f:
-            # TODO need more flexible parsing for files that have trailing
-            # missing values
             parts = line.rstrip("\n").split("\t")
             if len(parts) != numCols:
                 raise RuntimeError("All peptide time series lines must have %d columns\n%s" % (numCols, line))
             prot = pep2Prot[parts[0]]
+
+            timeSeries = parts[1:]
+            # Replace missing values if necessary
+            if repairMissing:
+                timeSeries = RepairMissingData(timeSeries, defaultFirstValue)
+            
             # Create a string representation of the time series that Cytoscape can parse
-            # No longer add a 0 value, the time series file should have a
-            # suitable initial value
             if logTransform:
-                timeSeries = map(robustLog,map(float,parts[1:]))
+                timeSeries = map(robustLog,map(float,timeSeries))
             else:
-                print parts[1:]
-                # TODO need to be more robust to missing data
-                timeSeries = map(float,parts[1:])
+                timeSeries = map(float,timeSeries)
             timeSeriesMin = min(timeSeriesMin, min(timeSeries))
             timeSeriesMax = max(timeSeriesMax, max(timeSeries))
             timeSeries = ", ".join(map(str,timeSeries))
@@ -135,6 +142,8 @@ def PrepTemporalCytoscapeTPS(peptideMapFile, timeSeriesFile, peptideFirstScoreFi
                 prot2TimeSeries["insig"][prot].append(timeSeries)
             
     print "Loaded time series for %d proteins (and pseudonodes)" % len(prot2TimeSeries["all"])
+    # Only some datasets need an initial 0 value to be added, some may already
+    # include it
     if addZero:
         print "Added 0 to the start of every time series"
     print "Min value in time series: %f" % timeSeriesMin
@@ -465,3 +474,18 @@ def FirstSignificant(pvals, thresh):
         if pvals[t] <= thresh:
             return str(2**(t+1))
     return "Not significant"
+
+def RepairMissingData(time_series, first_value):
+    """Given a list of time series value in a string format, replace missing
+    values.  If the first time point is missing, set it to first_value. This
+    should be 1 if the log transform will be taken or 0 otherwise. If later
+    time points are missing, set them to the previous observed time point.
+    """
+    if time_series[0] == '':
+        time_series[0] = first_value
+
+    for i in range(1, len(time_series)):
+        if time_series[i] == '':
+            time_series[i] = time_series[i-1]
+
+    return time_series
