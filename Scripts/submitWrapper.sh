@@ -1,17 +1,17 @@
-export outpath=/mnt/ws/home/dcronin/PCSF-020217
+export outpath=/mnt/ws/home/dcronin/PCSF-06_30_17
 mkdir -p $outpath
 D=10
 r=0
 g=1e-3
 Prizes=prizes
 s=122815
-for b in $(seq 0.5 0.5 1.0)
+for b in $(seq 0.25 0.25 10.0)
 do
-	for m in $(seq 0 0.5 0.1)
+	for m in $(seq 0 0.005 0.1)
 	do
-		for w in $(seq 0.5 0.5 1.0)
+		for w in $(seq 0.5 0.5 10.0)
 		do
-			filename=/mnt/ws/home/dcronin/PCSF-Sweep-SubmitFile/conf_w${w}_b${b}_D${D}_m${m}_r${r}_g${g}.txt
+			filename=/mnt/ws/home/dcronin/PCSF-Sweep-SubmitFile_063017/conf_w${w}_b${b}_D${D}_m${m}_r${r}_g${g}.txt
 			touch $filename
 			printf "w = ${w}\n" >> $filename
 			printf "b = ${b}\n" >> $filename

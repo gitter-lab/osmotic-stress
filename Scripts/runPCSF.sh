@@ -6,9 +6,9 @@ echo RunningOn $runningon
 
 codeD=/mnt/ws/home/dcronin/OmicsIntegrator/scripts
 
-prizefile=/mnt/ws/home/dcronin/Yeast/osmotic-stress/Notebooks/PrizesNotebook/${prizetype}.txt
-edgefile=/mnt/ws/home/dcronin/Yeast/osmotic-stress/Notebooks/ChasmanNetwork-DirUndir/ChasmanNetwork-DirUndir.txt
-dummy=/mnt/ws/home/dcronin/Yeast/osmotic-stress/Scripts/dummy.txt
+prizefile=/mnt/ws/home/dcronin/osmotic-stress/Notebooks/PrizesNotebook/${prizetype}.txt
+edgefile=/mnt/ws/home/dcronin/osmotic-stress/Notebooks/ChasmanNetwork-DirUndir/ChasmanNetwork-DirUndir.txt
+dummy=/mnt/ws/home/dcronin/osmotic-stress/Scripts/dummy.txt
 msgpath=~/GitterLab/progs/bin/msgsteiner
 outlabel=${prizetype}_beta${beta}_mu${mu}_omega${omega}_seed${seed}
 
