@@ -6,7 +6,10 @@ import SummarizeSif
 #prizeFile = os.path.join('..','..','data','prizes','101515','combined','maxProteinScores2KM_tfPrizes.txt')
 
 #resultsDir = r'/mnt/ws/home/dcronin/'
-prizeFile = r'/mnt/ws/home/dcronin/osmotic-stress/Notebooks/PrizesNotebook/prizes.txt'
+USERPATH = r'/mnt/ws/home/dcronin/'
+NOTEBOOK = r'osmotic-stress/Notebooks/'
+prizeFile = USERPATH + NOTEBOOK + 'PrizesNotebook/prizes.txt'
+#prizeFile = r'/mnt/ws/home/dcronin/osmotic-stress/Notebooks/PrizesNotebook/prizes.txt'
 
 indir = r'/mnt/ws/home/dcronin/PCSF-06_30_17/'#os.path.join(resultsDir, '122815')
 runname = 'prizes'
