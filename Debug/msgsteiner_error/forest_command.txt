@@ -1,1 +1,0 @@
-python OmicsIntegrator/scripts/forest.py -p prizes.txt -e ChasmanNetwork-DirUndir.txt -c conf_w10.0_b10.00_D10_m0.095_r0_g1e-3.txt -d dummy.txt --msgpath=/mnt/ws/virology/shared/lab_folders/GitterLab/progs/bin/msgsteiner --outpath=test_edge_err --outlabel=prizes_beta10.00_mu0.095_omega10.0_seed122815 --cyto30 -s 122815

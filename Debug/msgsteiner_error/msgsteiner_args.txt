@@ -1,1 +1,0 @@
-/mnt/ws/virology/shared/lab_folders/GitterLab/progs/bin/msgsteiner -d 10 -t 1000000 -o -r 0.0 -g 0.001 -j 1 -s 122815 -z 122815
