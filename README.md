@@ -1,8 +1,8 @@
-# osmotic-stress
+# osmotic-stress [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12576734.svg)](https://doi.org/10.5281/zenodo.12576734)
 A study of yeast osmotic stress response signaling for the following manuscript:
 
 [Synthesizing Signaling Pathways from Temporal Phosphoproteomic Data](https://doi.org/10.1016/j.celrep.2018.08.085).  
-Ali Sinan Köksal, Kirsten Beck, Dylan R. Cronin, Aaron McKenna, Nathan D. Camp, Saurabh Srivastava, Matthew E. MacGilvray, Rastislav Bodík, Alejandro Wolf-Yadlin, Ernest Fraenkel, Jasmin Fisher, Anthony Gitter.  
+Ali Sinan KÃ¶ksal, Kirsten Beck, Dylan R. Cronin, Aaron McKenna, Nathan D. Camp, Saurabh Srivastava, Matthew E. MacGilvray, Rastislav BodÃ­k, Alejandro Wolf-Yadlin, Ernest Fraenkel, Jasmin Fisher, Anthony Gitter.  
 *Cell Reports* 24(13):3607-3618 2018.
 
 See that manuscript for thrid-party data attribution and references.
