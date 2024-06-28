@@ -1,4 +1,4 @@
-export outpath=/mnt/ws/home/dcronin/NoisePCSF-080116
+export outpath=/mnt/ws/home/dcronin/NoisePCSF-06_30_17
 mkdir -p $outpath
 D=10
 r=0.01
@@ -7,7 +7,7 @@ Prizes=prizes
 b=1.75
 m=0.095
 w=4.5
-filename=./NoiseOutput/_w${w}_b${b}_D${D}_m${m}_r${r}_g${g}.txt
+filename=../../NoiseOutput/_w${w}_b${b}_D${D}_m${m}_r${r}_g${g}.txt
 rm -f $filename
 touch $filename
 printf "w = ${w}\n" >> $filename

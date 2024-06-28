@@ -1,4 +1,4 @@
-export outpath=/mnt/ws/home/dcronin/PCSF-072116
+export outpath=/mnt/ws/home/dcronin/PCSF-06_30_17
 mkdir -p $outpath
 D=10
 r=0
@@ -11,7 +11,7 @@ do
 	do
 		for w in $(seq 0.5 0.5 10.0)
 		do
-			filename=./Parameters/conf_w${w}_b${b}_D${D}_m${m}_r${r}_g${g}.txt
+			filename=/mnt/ws/home/dcronin/PCSF-Sweep-SubmitFile_063017/conf_w${w}_b${b}_D${D}_m${m}_r${r}_g${g}.txt
 			touch $filename
 			printf "w = ${w}\n" >> $filename
 			printf "b = ${b}\n" >> $filename

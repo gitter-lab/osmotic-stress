@@ -27,3 +27,7 @@ Ninth Step:
 	- Forest to TPS
 Tenth Step: 
 	- Run TPS
+
+Kinase_Target_Evaluation: use the datasets in the `data/evaluation` subdirectory to evaluate the predicted targets of Rck2 and Cdc28.
+Also simplify the SGD id mapping file.
+

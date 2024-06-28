@@ -1,4 +1,5 @@
 Files used for parameter sweeps:
+(dummy.txt needed for PCSF sweeps - contains important nodes)
 runPCSF.sh
 submitPCSF.sub
 submitWrapper.sh

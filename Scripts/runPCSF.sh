@@ -6,10 +6,10 @@ echo RunningOn $runningon
 
 codeD=/mnt/ws/home/dcronin/OmicsIntegrator/scripts
 
-prizefile=/mnt/ws/home/dcronin/Yeast/prizes/${prizetype}.txt
-edgefile=/mnt/ws/home/dcronin/Yeast/ChasmanNetwork-DirUndir.txt
-dummy=/mnt/ws/home/dcronin/Yeast/dummy.txt
-msgpath=/mnt/ws/home/dcronin/GitterLab/progs/bin/msgsteiner
+prizefile=/mnt/ws/home/dcronin/osmotic-stress/Notebooks/PrizesNotebook/${prizetype}.txt
+edgefile=/mnt/ws/home/dcronin/osmotic-stress/Notebooks/ChasmanNetwork-DirUndir/ChasmanNetwork-DirUndir.txt
+dummy=/mnt/ws/home/dcronin/osmotic-stress/Scripts/dummy.txt
+msgpath=~/GitterLab/progs/bin/msgsteiner
 outlabel=${prizetype}_beta${beta}_mu${mu}_omega${omega}_seed${seed}
 
 CMD="python $codeD/forest.py \
